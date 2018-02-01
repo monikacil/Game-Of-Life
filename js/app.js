@@ -31,8 +31,10 @@ document.addEventListener("DOMContentLoaded", function (){
             this.cells.push(newDiv);
         }
         for(var j = 0; j < this.cells.length; j++){
-            this.cells[j].addEventListener("click", function(){
-                this.classList.toggle("live");
+            this.cells[j].addEventListener("mouseover", function(event) {
+                if(event.buttons === 1) {
+                    this.classList.toggle("live");
+                }
             })
         }
     };
