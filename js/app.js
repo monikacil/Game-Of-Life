@@ -1,5 +1,18 @@
 document.addEventListener("DOMContentLoaded", function (){
 
+    var playButton = document.getElementById("play");
+    var pauseButton = document.getElementById("pause");
+    var timer;
+
+    var newGame;
+
+    var widthInput = document.getElementById("width");
+    var heightInput = document.getElementById("height");
+    var createBoardButton = document.getElementById("createBoard");
+    var givenWidth;
+    var givenHeight;
+
+
     function GameOfLife(boardWidth, boardHeight) {
         this.width = boardWidth;
         this.height = boardHeight;
@@ -86,14 +99,6 @@ document.addEventListener("DOMContentLoaded", function (){
         }
     };
 
-    var newGame = new GameOfLife(50, 50);
-    newGame.createBoard();
-    newGame.firstGlider();
-
-    var playButton = document.getElementById("play");
-    var pauseButton = document.getElementById("pause");
-    var timer;
-
     playButton.addEventListener("click", function(){
         if(!timer) {
             timer = setInterval(function () {
@@ -105,7 +110,20 @@ document.addEventListener("DOMContentLoaded", function (){
     pauseButton.addEventListener("click", function(){
         clearInterval(timer);
         timer = undefined;
-    })
+    });
+
+    widthInput.addEventListener("change", function(){
+        givenWidth = this.value;
+    });
+    heightInput.addEventListener("change", function(){
+        givenHeight = this.value;
+    });
+
+    createBoardButton.addEventListener("click", function(){
+        newGame = new GameOfLife(givenWidth, givenHeight);
+        newGame.createBoard();
+        newGame.firstGlider();
+    });
 
 
 });
