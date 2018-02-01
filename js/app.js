@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", function (){
     };
 
     GameOfLife.prototype.getCell = function (x, y) {
-        var index = x + y * this.width;
-        return this.cells[index];
+        if(x >= 0 && y >= 0) {
+            var index = x + y * this.width;
+            return this.cells[index];
+        }
+        return undefined;
     };
 
     GameOfLife.prototype.setCellState = function(x, y, state){
@@ -88,9 +91,21 @@ document.addEventListener("DOMContentLoaded", function (){
     newGame.firstGlider();
 
     var playButton = document.getElementById("play");
+    var pauseButton = document.getElementById("pause");
+    var timer;
 
     playButton.addEventListener("click", function(){
-        newGame.printNextGeneration();
+        if(!timer) {
+            timer = setInterval(function () {
+                newGame.printNextGeneration();
+            }, 100);
+        }
     });
+
+    pauseButton.addEventListener("click", function(){
+        clearInterval(timer);
+        timer = undefined;
+    })
+
 
 });
