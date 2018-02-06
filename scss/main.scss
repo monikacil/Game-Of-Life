@@ -1,29 +1,69 @@
+%buttons {
+  text-align: center;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #cccccc;
-  #board {
-    margin: 50px auto 0;
-    min-height: 100px;
-    min-width: 100px;
-    div {
-      width: 10px;
-      height: 10px;
-      border: 1px solid #cccccc;
-      background-color: #ffffff;
-      float: left;
+    margin: 0;
+    padding: 0;
+    background-color: #cccccc;
+    font-family: sans-serif;
+    .flex-container{
+      text-align: center;
+      min-width: 600px;
+      width: 70%;
+      min-height: 100px;
+      margin: 20px auto 0 auto;
+      h1{
+        font-size: 40px;
+      }
+      #board {
+        margin: 20px auto;
+        min-height: 100px;
+        min-width: 100px;
+        div {
+          width: 10px;
+          height: 10px;
+          border: 1px solid #cccccc;
+          background-color: #ffffff;
+          float: left;
+        }
+        .live {
+          background-color: black;
+        }
+      }
     }
-    .live{
-      background-color: #000000;
+  #game-menu {
+    margin: 20px auto;
+    width: auto;
+    text-align: center;
+    #createBoard{
+      margin: 20px auto 0 auto;
+      display: block;
+      @extend %buttons;
+    }
+    label {
+      margin: 0 10px 0 20px;
+      font-size: 20px;
+    }
+    input{
+      width: 60px;
+      height: 40px;
+      font-size: 20px;
+      text-align: center;
     }
   }
-
-  #game-menu {
-    margin: 50px auto;
-    width: auto;
+  #game-set{
+    text-align: center;
+    #play, #pause {
+      @extend %buttons;
+    }
   }
 }

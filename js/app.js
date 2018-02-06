@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function (){
         this.cells = [];
     }
 
-
     GameOfLife.prototype.createBoard = function(){
         this.board.style.width = (this.width * 10).toString() + "px";
         this.board.style.height = (this.height * 10).toString() + "px";
@@ -122,9 +121,11 @@ document.addEventListener("DOMContentLoaded", function (){
     });
 
     createBoardButton.addEventListener("click", function(){
-        newGame = new GameOfLife(givenWidth, givenHeight);
-        newGame.createBoard();
-        newGame.firstGlider();
+        if(!newGame){
+            newGame = new GameOfLife(givenWidth, givenHeight);
+            newGame.createBoard();
+            newGame.firstGlider();
+        }
     });
 
 
