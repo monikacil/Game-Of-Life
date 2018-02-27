@@ -9,9 +9,8 @@ document.addEventListener("DOMContentLoaded", function (){
     var widthInput = document.getElementById("width");
     var heightInput = document.getElementById("height");
     var createBoardButton = document.getElementById("createBoard");
-    var givenWidth;
-    var givenHeight;
-
+    var givenWidth = parseInt(widthInput.value);
+    var givenHeight = parseInt(heightInput.value);
 
     function GameOfLife(boardWidth, boardHeight) {
         this.width = boardWidth;
@@ -34,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function (){
                 if(event.buttons === 1) {
                     this.classList.toggle("live");
                 }
-            })
+            });
+            this.cells[j].addEventListener("click", function(){
+                this.classList.toggle("live");
+            });
         }
     };
 
